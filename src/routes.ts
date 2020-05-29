@@ -1,10 +1,11 @@
 import { Router } from 'express'
 import UserController from './app/controllers/UserController'
+import passwordMiddleware from './app/middlewares/validators/PasswordValidator'
 
 const routes = Router()
 
-routes.get('/users', UserController.index)
+routes.get('/users', passwordMiddleware, UserController.index)
 
-routes.post('/users', UserController.create)
+routes.post('/users', passwordMiddleware, UserController.create)
 
 export default routes
