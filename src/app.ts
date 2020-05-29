@@ -7,6 +7,9 @@ class App {
 
     public constructor () {
       this.express = express()
+      this.middlewares()
+      this.database()
+      this.routes()
     }
 
     private middlewares (): void {
@@ -16,7 +19,8 @@ class App {
 
     private database (): void {
       mongoose.connect('mongodb://localhost:27017/tsnode', {
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useUnifiedTopology: true
       })
     }
 
@@ -26,3 +30,5 @@ class App {
       })
     }
 }
+
+export default new App().express
