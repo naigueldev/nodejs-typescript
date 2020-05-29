@@ -9,9 +9,9 @@ class UserController {
   }
 
   public async create (req: Request, res: Response): Promise<Response> {
-    const user = User.create(req.body)
+    const user = await User.create(req.body)
 
-    return res.json(user)
+    return res.send(user)
   }
 }
 
